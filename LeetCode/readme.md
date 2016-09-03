@@ -13,7 +13,7 @@
 			Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
 			Output: 7 -> 0 -> 8
 
-####3Longest Substring Without Repeating Characters
+####3	Longest Substring Without Repeating Characters
 		Given a string, find the length of the longest substring without repeating characters.
 		给定一个字符串，找到最长的没有重复字符的子串
 			
@@ -29,3 +29,21 @@
 ####5  Longest Palindromic Substring  (做出来的超出时间限制)
 		Given a string S, find the longest palindromic substring in S. You may assume that the maximum length of S is 1000, and there exists one unique longest palindromic substring.
 		给一个字符串S，在s中找到最长的回文，你可以假设s的最大长度为10000，而且存在一个独一无二的最长回文
+
+####6	ZigZag Conversion
+		The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)
+		P   A   H   N
+		A P L S I I G
+		Y   I   R
+		And then read line by line: "PAHNAPLSIIGYIR"
+		给字符串a，按zigzag方式排列
+
+####7   Reverse Integer
+		Reverse digits of an integer.
+		Example1: x = 123, return 321
+		Example2: x = -123, return -321
+		反转数
+####8   String to Integer (atoi)
+		将string类型的字符串转换成整型数据，类似于C++库里的atoi函数
+
+		
