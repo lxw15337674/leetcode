@@ -45,5 +45,22 @@
 		反转数
 ####8   String to Integer (atoi)
 		将string类型的字符串转换成整型数据，类似于C++库里的atoi函数
+	
+####9   Palindrome Number
+		Determine whether an integer is a palindrome. Do this without extra space.
+		判断回文，题目要求只能用O(1)的空间，所以不能考虑把它转化为字符串然后reverse比较的方法。
+		思路1：将输入整数转换成倒序的一个整数，再比较转换前后的两个数是否相等，但是这样需要额外的空间开销
+		思路2：每次提取头尾两个数，判断它们是否相等，判断后去掉头尾两个数。
 
-		
+####10  Regular Expression Matching
+		正则表达式匹配;
+		'.' Matches any single character.
+		'*' Matches zero or more of the preceding element.
+		Some examples:
+		isMatch("aa","a") → false
+		isMatch("aa","aa") → true
+		isMatch("aaa","aa") → false
+		isMatch("aa", "a*") → true
+		isMatch("aa", ".*") → true
+		isMatch("ab", ".*") → true
+		isMatch("aab", "c*a*b") → true
