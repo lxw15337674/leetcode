@@ -64,3 +64,10 @@
 		isMatch("aa", ".*") → true
 		isMatch("ab", ".*") → true
 		isMatch("aab", "c*a*b") → true
+		
+####11	Container With Most Water（最大水容器）
+		Given n non-negative integers a1, a2, ..., an, where each represents a point at coordinate (i, ai). 
+		n vertical lines are drawn such that thetwo endpoints ofline i is at (i, ai) and (i, 0). 
+		Find twolines, which together with x-axis forms a container, such that the container containsthe most water.
+		Note: You may not slant the container.
+		在二维坐标系中，(i, ai) 表示 从 (i, 0) 到 (i, ai) 的一条线段，任意两条这样的线段和 x 轴组成一个木桶，找出能够盛水最多的木桶，返回其容积。

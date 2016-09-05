@@ -27,12 +27,13 @@ def isMatch(s, p):
                 answer = isMatch(s[a:], p[a + 2:])
                 return answer
             else:
+                ##############处理*没有解决########################
                     # 处理.*
                     if p[a] == '.':
                         # print('1')
                         length = len(p) - (a + 2)
                         # print(length,s[len(s) - length+2:], p[length-1:])
-                        answer = isMatch(s[len(s) - length+2:], p[length:])
+                        answer = isMatch(s[len(s) - length+2:], p[length-a:])
                         return answer
                     # 处理*匹配的
                     else:
@@ -40,6 +41,11 @@ def isMatch(s, p):
                             # print(b,a,len(p) - a - 1)
                             # print(b,s[b],p[a],a,len(p) - a - 1)
                             # 循环到*不匹配的后，去掉前面已匹配的字符
+                            print(len(s)-b,len(s)-a-p.count("*") * 2)
+                            if len(s)-b==len(s)-a-p.count("*") * 2:
+                                length = len(p) - (a + 2)
+                                answer = isMatch(s[len(s) - length + 2:], p[length:])
+                                return answer
                             try:
                                 if s[b] != p[a]:
                                     answer = isMatch(s[b:], p[a + 2:])
@@ -48,9 +54,6 @@ def isMatch(s, p):
                                 length = len(p) - (a + 2)
                                 answer = isMatch(s[len(s) - length:], p[length + 1:])
                                 return answer
-                        length = len(p) - (a + 2)
-                        answer = isMatch(s[len(s) - length + 2:], p[length :])
-                        return answer
         # 处理不带*
         else:
             if s[a] != p[a] and p[a] != '.':
@@ -58,6 +61,6 @@ def isMatch(s, p):
     return True
 
 
-a = 'cbbbbaaa'
-b = ".*a*aaa"
+a = 'cbbbbaa'
+b = ".*a*"
 print(isMatch(a, b))
