@@ -7,7 +7,6 @@ def sort():
     inc = 0
     while inc <= length / 3:
         inc = inc * 3 + 1
-    print(inc)
     while inc >= 1:
         for i in range(inc, length):
             tmp = list[i]
