@@ -70,4 +70,31 @@
 		n vertical lines are drawn such that thetwo endpoints ofline i is at (i, ai) and (i, 0). 
 		Find twolines, which together with x-axis forms a container, such that the container containsthe most water.
 		Note: You may not slant the container.
-		在二维坐标系中，(i, ai) 表示 从 (i, 0) 到 (i, ai) 的一条线段，任意两条这样的线段和 x 轴组成一个木桶，找出能够盛水最多的木桶，返回其容积。
+		x轴上在1,2,...,n点上有许多垂直的线段，长度依次是a1, a2, ..., an。找出两条线段，使他们和x抽围成的面积最大。面积公式是 Min(ai, aj) X |j - i|
+
+####12  Integer to Roman
+		Given an integer, convert it to a roman numeral.
+		Input is guaranteed to be within the range from 1 to 3999.
+		给整数转换为罗马数字.
+			罗马数字有如下符号： 
+			基本字符	I	V	X	L	C	D	M
+			对应阿拉伯数字	1	5	10	50	100	500	1000
+			
+####13	Roman to Integer
+		给roman数字转int
+
+####14  Longest Common Prefix
+		求所有字符串的最长公共前缀，即数组的所有字符串都包含这个前缀
+
+####15  3Sum
+		Given an array S of n integers, are there elements a, b, c in S such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.
+		For example, given array S = [-1, 0, 1, 2, -1, -4],
+		A solution set is:
+		[
+		  [-1, 0, 1],
+		  [-1, -1, 2]
+		]
+		给一个由n个整数组成的列S,是否存在S中的a,b,c使得a+b+c=0?在列中找到独特的3个数.
+####16  3Sum Closest
+		Given an array S of n integers, find three integers in S such that the sum is closest to a given number, target. Return the sum of the three integers. You may assume that each input would have exactly one solution.
+		在给定数列中找出三个数，使和最接近 target。
