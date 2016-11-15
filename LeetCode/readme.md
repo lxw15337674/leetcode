@@ -95,6 +95,28 @@
 		  [-1, -1, 2]
 		]
 		给一个由n个整数组成的列S,是否存在S中的a,b,c使得a+b+c=0?在列中找到独特的3个数.
+
 ####16  3Sum Closest
 		Given an array S of n integers, find three integers in S such that the sum is closest to a given number, target. Return the sum of the three integers. You may assume that each input would have exactly one solution.
 		在给定数列中找出三个数，使和最接近 target。
+
+####17	Letter Combinations of a Phone Number
+		Given a digit string, return all possible letter combinations that the number could represent.
+		A mapping of digit to letters (just like on the telephone buttons) is given below.
+		给一个数字字符串,返回所有可能代表的字母组合.
+		一个数字映射到字母的(就像在电话按钮上)
+
+####18	4Sum（参考15题）
+		Given an array S of n integers, are there elements a, b, c, and d in S such that a + b + c + d = target? Find all unique quadruplets in the array which gives the sum of target.
+
+####19	Remove Nth Node From End of List(python不存在链表,所以不做)
+		Given a linked list, remove the (n)th node from the end of list and return its head.
+		For example,
+		Given linked list: 1->2->3->4->5, and n = 2.
+		After removing the second node from the end, the linked list becomes 1->2->3->5.
+		给定一个链表，删除第n个节点，返回头
+
+####20	Valid Parentheses
+		Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+		The brackets must close in the correct order, "()" and "()[]{}" are all valid but "(]" and "([)]" are not.
+		

@@ -1,7 +1,6 @@
 # 穷举法
 def threeSum(nums):
     nums.sort()
-    print(nums)
     answer = []
     for a in range(len(nums)):
         if nums[a] > 0:
