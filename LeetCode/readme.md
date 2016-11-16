@@ -119,4 +119,30 @@
 ####20	Valid Parentheses
 		Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
 		The brackets must close in the correct order, "()" and "()[]{}" are all valid but "(]" and "([)]" are not.
-		
+
+####21  Merge Two Sorted Lists(python不存在链表,所以不做)
+		Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.
+
+####22	Generate Parentheses
+		Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
+		For example, given n = 3, a solution set is:
+		[
+		  "((()))",
+		  "(()())",
+		  "(())()",
+		  "()(())",
+		  "()()()"
+		]
+		给定一个非负整数n，生成n对括号的所有合法排列。
+
+####23  Merge k Sorted Lists(python不存在链表,所以不做)
+####24  Swap Nodes in Pairs (python不存在链表,所以不做)
+####25	Reverse Nodes in k-Group(python不存在链表,所以不做)
+####26	Remove Duplicates from Sorted Array
+		Given a sorted array, remove the duplicates in place such that each element appear only once and return the new length.
+		Do not allocate extra space for another array, you must do this in place with constant memory.
+		For example,
+		Given input array nums = [1,1,2],
+		Your function should return length = 2, with the first two elements of nums being 1 and 2 respectively. It doesn't matter what you leave beyond the new length.
+		给定一个排序的数组,删除重复的元素,使得每个元素只出现一次,并返回新的长度.
+		不能为另一个数组分配额外的空间,必须在固定的内存中做到.
