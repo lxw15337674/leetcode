@@ -136,8 +136,11 @@
 		给定一个非负整数n，生成n对括号的所有合法排列。
 
 ####23  Merge k Sorted Lists(python不存在链表,所以不做)
+
 ####24  Swap Nodes in Pairs (python不存在链表,所以不做)
+
 ####25	Reverse Nodes in k-Group(python不存在链表,所以不做)
+
 ####26	Remove Duplicates from Sorted Array
 		Given a sorted array, remove the duplicates in place such that each element appear only once and return the new length.
 		Do not allocate extra space for another array, you must do this in place with constant memory.
@@ -146,3 +149,19 @@
 		Your function should return length = 2, with the first two elements of nums being 1 and 2 respectively. It doesn't matter what you leave beyond the new length.
 		给定一个排序的数组,删除重复的元素,使得每个元素只出现一次,并返回新的长度.
 		不能为另一个数组分配额外的空间,必须在固定的内存中做到.
+		
+####27  Remove Element
+		删除元素
+		Given an array and a value, remove all instances of that value in place and return the new length.
+		Do not allocate extra space for another array, you must do this in place with constant memory.
+		The order of elements can be changed. It doesn't matter what you leave beyond the new length.
+		Example:
+		Given input array nums = [3,2,2,3], val = 3
+		Your function should return length = 2, with the first two elements of nums being 2.
+		给定一个数组和一个值,删除数组中的该值 并返回新的长度.
+		不能为另一个数组分配额外的空间
+
+####28	Implement strStr()
+		实现strStr()
+		Returns the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
+		返回关键字在字符串中第一次出现的位置,如果不存在而返回-1.
