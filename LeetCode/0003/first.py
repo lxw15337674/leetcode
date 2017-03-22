@@ -18,3 +18,4 @@ class Solution(object):
             length = len(c)
         return length
 
+
