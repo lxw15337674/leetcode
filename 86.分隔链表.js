@@ -22,24 +22,32 @@ function ListNode(val, next) {
  * @return {ListNode}
  */
 var partition = function (head, x) {
-  let preList = new ListNode()
-  let afterList = new ListNode()
-  const pev = preList
-  const after = afterList
-  while (head) {
-    if (head.val >= x) {
-      afterList.next = head
-      afterList = afterList.next
-    } else {
-      preList.next = head
-      preList = preList.next
-    }
-    const node = head.next
-    head.next = null
-    head = node
-  }
-  preList.next = after.next
-  return pev.next
+	// 创建两个链表，用于存储小于 x 和大于等于 x 的节点
+	let preList = new ListNode(); // 存储小于 x 的节点
+	let afterList = new ListNode(); // 存储大于等于 x 的节点
+	const pev = preList; // 记录小于 x 的节点链表的头部
+	const after = afterList; // 记录大于等于 x 的节点链表的头部
+
+	// 遍历原始链表，将节点插入到对应的链表中
+	while (head) {
+		if (head.val >= x) {
+			// 如果节点的值大于等于 x，则插入到 afterList 中
+			afterList.next = head;
+			afterList = afterList.next;
+		} else {
+			// 否则插入到 preList 中
+			preList.next = head;
+			preList = preList.next;
+		}
+		// 将当前遍历到的节点从原始链表中分离出来。
+		const node = head.next;
+		head.next = null;
+		head = node;
+	}
+	// 将小于 x 的节点链表拼接到大于等于 x 的节点链表的尾部
+	preList.next = after.next;
+	// 返回小于 x 的节点链表的头部，即 pev.next
+	return pev.next;
 };
 // @lc code=end
 
