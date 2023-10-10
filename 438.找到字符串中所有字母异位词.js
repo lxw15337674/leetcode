@@ -13,33 +13,31 @@
 var findAnagrams = function (s, p) {
   const res = []
   const map = {}
+  const currentMap = {}
   for (let char of p) {
     map[char] = (map?.[char] ?? 0) + 1
+    currentMap[char] = 0
   }
-  const allow = () => {
-    for (let char in map) {
-      if (map[char]) {
+  let left = 0, right = 0
+  const match = () => {
+    for (let key in currentMap) {
+      if (currentMap[key] !== map[key] ?? 0) {
         return false
       }
     }
     return true
   }
-  let left = 0, right = 0;
   while (right < s.length) {
     const rightChar = s[right]
-    if (map?.[rightChar] !== undefined) {
-      map[rightChar]--
+    if (right - left + 1 <= p.length) {
+      currentMap[rightChar] = (currentMap[rightChar] ?? 0) + 1;
+      right++;
+    } else {
+      currentMap[s[left]]--;
+      left++;
     }
-    right++
-    while (right - left >= p.length) {
-      const leftChar = s[left]
-      if (right - left === p.length && allow()) {
-        res.push(left)
-      }
-      left++
-      if (map?.[leftChar] !== undefined) {
-        map[leftChar]++
-      }
+    if (match()) {
+      res.push(left)
     }
   }
   return res

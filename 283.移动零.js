@@ -9,19 +9,21 @@
  * @param {number[]} nums
  * @return {void} Do not return anything, modify nums in-place instead.
  */
+
 var moveZeroes = function (nums) {
-  let slow = 0
-  let fast = 0
+  // 先移除所有 0，然后把最后的元素都置为 0，就相当于移动 0 的效果。
+  // https://leetcode.cn/problems/move-zeroes/solutions/90229/dong-hua-yan-shi-283yi-dong-ling-by-wang_ni_ma/?envType=study-plan-v2&envId=top-100-liked
+  let low = 0, fast = 0
   while (fast < nums.length) {
-    if (nums[fast]) {
-      nums[slow] = nums[fast]
-      slow++
+    if (nums[fast] !== 0) {
+      nums[low] = nums[fast]
+      low++
     }
     fast++
   }
-  while (slow < nums.length) {
-    nums[slow] = 0
-    slow++
+  while (low < fast) {
+    nums[low] = 0
+    low++
   }
   return nums
 };

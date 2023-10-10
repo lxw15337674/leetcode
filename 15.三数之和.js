@@ -11,9 +11,7 @@
  */
 var threeSum = function (nums) {
 	function twoSum(nums, target) {
-		const res = [];
-		let left = 0;
-		let right = nums.length - 1;
+		let left = 0, right = nums.length - 1, res = []
 		while (left < right) {
 			const count = nums[left] + nums[right];
 			if (count > target || nums[right + 1] === nums[right]) {
@@ -30,7 +28,7 @@ var threeSum = function (nums) {
 				continue;
 			}
 		}
-		return res;
+		return res
 	}
 	const res = [];
 	// 首先将原数组进行升序排序
