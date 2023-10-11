@@ -19,21 +19,21 @@
  * @return {ListNode}
  */
 var getIntersectionNode = function (headA, headB) {
-  let pa = headA
-  let pb = headB
-  while (pa !== pb) {
-    if (pa) {
-      pa = pa.next
-    } else {
-      pa = headB
-    }
-    if (pb) {
-      pb = pb.next
-    } else {
-      pb = headA
-    }
+  // hash存储headA的所有节点，然后循环headB去匹配
+  const map = new Map();
+  let temp = headA;
+  while (temp) {
+    map.set(temp, 1);
+    temp = temp.next;
   }
-  return pa
+  temp = headB;
+  while (temp) {
+    if (map.has(temp)) {
+      return temp;
+    }
+    temp = temp.next;
+  }
+  return null;
 };
 // @lc code=end
 
