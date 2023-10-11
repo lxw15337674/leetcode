@@ -34,7 +34,6 @@ var subarraySum = function (nums, k) {
       map.set(sum, 1);
     }
   }
-
   return count;
 };
 // @lc code=end
