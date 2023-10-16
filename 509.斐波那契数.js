@@ -10,11 +10,15 @@
  * @return {number}
  */
 var fib = function (n) {
-  const dp = [0, 1, 1]
-  for (let i = 3; i <= n; i++) {
-    dp[i] = dp[i - 1] + dp[i - 2]
+  const list = [0, 1]
+  for (let i = 2; i <= n; i++) {
+    list[i] = list[i - 1] + list[i - 2]
   }
-  return dp[n]
+  return list[n]
 };
 // @lc code=end
 
+
+// @after-stub-for-debug-begin
+module.exports = fib;
+// @after-stub-for-debug-end

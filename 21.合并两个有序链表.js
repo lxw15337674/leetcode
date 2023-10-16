@@ -22,25 +22,29 @@ function ListNode(val, next) {
  * @return {ListNode}
  */
 var mergeTwoLists = function (list1, list2) {
-	// let list = new ListNode(-1);
-	// let i = list;
-	// while (list1 && list2) {
-	// 	if (list1.val <= list2.val) {
-	// 		list.next = list1;
-	// 		list1 = list1.next;
-	// 	} else {
-	// 		list.next = list2;
-	// 		list2 = list2.next;
-	// 	}
-	// 	list = list.next;
-	// }
-	// if (list1) {
-	// 	list.next = list1;
-	// }
-	// if (list2) {
-	// 	list.next = list2;
-	// }
-	// return i.next;
+	const res = new ListNode(null, null)
+	let cur = res
+	while (list1 && list2) {
+		if (list1.val > list2.val) {
+			cur.next = list2
+			list2 = list2.next
+		} else {
+			cur.next = list1
+			list1 = list1.next
+		}
+		cur = cur.next
+	}
+	while (list1) {
+		cur.next = list1
+		list1 = list1.next
+		cur = cur.next
+	}
+	while (list2) {
+		cur.next = list2
+		list2 = list2.next
+		cur = cur.next
+	}
+	return res.next
 };
 // @lc code=end
 
