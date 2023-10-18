@@ -18,20 +18,41 @@
  * @return {number[][]}
  */
 var levelOrder = function (root) {
-  if (!root) return []
-  var res = []
-  helper(root, 0)
-  function helper(node, level) {
-    if (!node) return
-    if (!res[level]) {
-      res[level] = [node.val]
-    } else {
-      res[level].push(node.val)
+  if (!root) {
+    return []
+  }
+  const res = []
+  let queue = [root]
+  //  第一种写法
+  // while (queue.length) {
+  //   const levelNodes = []
+  //   res.push([])
+  //   for (let item of queue) {
+  //     res[res.length - 1].push(item.val)
+  //     if (item.left) {
+  //       levelNodes.push(item.left)
+  //     }
+  //     if (item.right) {
+  //       levelNodes.push(item.right)
+  //     }
+  //   }
+  //   queue = levelNodes
+  // }
+  // 第二种写法
+  while (queue.length) {
+    const length = queue.length
+    const levelNodes = []
+    for (let i = 0; i < length; i++) {
+      const node = queue.shift()
+      levelNodes.push(node.val)
+      if (node.left) {
+        queue.push(node.left)
+      }
+      if (node.right) {
+        queue.push(node.right)
+      }
     }
-    var left = node.left
-    var right = node.right
-    helper(left, level + 1)
-    helper(right, level + 1)
+    res.push(levelNodes);
   }
   return res
 };
