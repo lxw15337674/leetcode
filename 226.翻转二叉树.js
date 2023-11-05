@@ -18,16 +18,14 @@
  * @return {TreeNode}
  */
 var invertTree = function (root) {
-  const tra = (node) => {
-    if (!node) {
-      return node
-    }
+  const traverse = (node) => {
+    if (!node) return
     [node.left, node.right] = [node.right, node.left]
-    tra(node.left)
-    tra(node.right)
-    return node
+    traverse(node.left)
+    traverse(node.right)
   }
-  return tra(root)
+  traverse(root)
+  return root
 };
 // @lc code=end
 

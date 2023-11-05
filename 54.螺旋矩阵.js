@@ -3,52 +3,57 @@
  *
  * [54] 螺旋矩阵
  */
-
+// 使用四个变量 top、bottom、left 和 right 来跟踪当前螺旋矩阵的边界，并在遍历过程中逐步收缩边界。
 // @lc code=start
 /**
  * @param {number[][]} matrix
  * @return {number[]}
  */
 var spiralOrder = function (matrix) {
-  let x = 0, y = 0
-  let yLength = matrix.length - 1
-  let xLength = matrix[0].length - 1
-  let direction = 0
-  const res = []
-  while (true) {
-    while (x <= xLength - direction) {  // 修改边界条件
-      res.push(matrix[y][x]);
-      x++;
+  const numRows = matrix.length;
+  if (numRows === 0) {
+    return [];
+  }
+  const numCols = matrix[0].length;
+
+  let top = 0;
+  let bottom = numRows - 1;
+  let left = 0;
+  let right = numCols - 1;
+
+  const res = [];
+
+  while (top <= bottom && left <= right) {
+    // Traverse right
+    for (let col = left; col <= right; col++) {
+      res.push(matrix[top][col]);
     }
-    x--;
-    y++;
-    if (y > yLength - direction) break;  // 修改边界条件
-    while (y <= yLength - direction) {
-      res.push(matrix[y][x]);
-      y++;
+    top++;
+
+    // Traverse down
+    for (let row = top; row <= bottom; row++) {
+      res.push(matrix[row][right]);
     }
-    y--;
-    x--;
-    if (x < direction) break;  // 修改边界条件
-    while (x >= direction) {
-      res.push(matrix[y][x]);
-      x--;
+    right--;
+
+    // Check if there are remaining rows and traverse left
+    if (top <= bottom) {
+      for (let col = right; col >= left; col--) {
+        res.push(matrix[bottom][col]);
+      }
+      bottom--;
     }
-    x++;
-    y--;
-    if (y < direction + 1) break;  // 修改边界条件
-    while (y >= direction + 1) {
-      res.push(matrix[y][x]);
-      y--;
-    }
-    y++;
-    x++;
-    direction++;
-    if (xLength - direction * 2 < 0 || yLength - direction * 2 < 0) {
-      break;
+
+    // Check if there are remaining columns and traverse up
+    if (left <= right) {
+      for (let row = bottom; row >= top; row--) {
+        res.push(matrix[row][left]);
+      }
+      left++;
     }
   }
-  return res
+
+  return res;
 };
 // @lc code=end
 

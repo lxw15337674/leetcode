@@ -19,13 +19,13 @@
  */
 var maxDepth = function (root) {
   let max = 0
-  const tra = (root, depth) => {
-    if (!root) {
-      max = Math.max(max, depth)
+  const tra = (node, depth) => {
+    if (!node) {
       return
     }
-    tra(root.left, depth + 1)
-    tra(root.right, depth + 1)
+    max = Math.max(depth + 1, max)
+    tra(node.left, depth + 1)
+    tra(node.right, depth + 1)
   }
   tra(root, 0)
   return max

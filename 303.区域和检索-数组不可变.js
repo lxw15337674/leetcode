@@ -28,8 +28,6 @@
  * right 两点（也就是 nums[left] + nums[left + 1] + ... + nums[right] )
  * 
  * 
- * 
- * 
  * 示例 1：
  * 
  * 

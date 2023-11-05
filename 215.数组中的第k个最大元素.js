@@ -11,6 +11,7 @@
  * @return {number}
  */
 var findKthLargest = function (nums, k) {
+  // 快速排序，然后前k个
   const quickSort = (array, left, right) => {
     if (left >= right) {
       return
