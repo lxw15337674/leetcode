@@ -10,23 +10,22 @@
  * @return {number}
  */
 var lengthOfLongestSubstring = function (s) {
+  // 滑动窗口
   const map = new Map()
-  let left = 0, right = 0, res = 0
-  while (right < s.length) {
+  const len = s.length
+  let left = 0; right = 0; maxLen = 0
+  while (right < len) {
     const rightChar = s[right]
-    right++
-    // 进行窗口内数据的一系列更新
-    map.set(rightChar, (map.get(rightChar) || 0) + 1)
-    // 判断左侧窗口是否要收缩
-    while (map.get(rightChar) > 1) {
+    while (map.get(rightChar)) {
       const leftChar = s[left]
-      left++
-      // 进行窗口内数据的一系列更新
       map.set(leftChar, map.get(leftChar) - 1)
+      left++
     }
-    res = Math.max(res, right - left)
+    map.set(rightChar,1)
+    maxLen = Math.max(maxLen, right - left + 1)
+    right++
   }
-  return res
+  return maxLen
 };
 // @lc code=end
 
