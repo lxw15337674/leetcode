@@ -10,6 +10,7 @@
  * @return {string}
  */
 var longestPalindrome = function (s) {
+  // 以每个字符为中心，向两边扩展寻找回文子串。然后比较找到的回文子串的长度，更新最长回文子串。
   let max = ''
   let i = 0
   const find = (left, right) => {

@@ -10,17 +10,16 @@
  * @return {number[][]}
  */
 var subsets = function (nums) {
-  let res = []
-  const tra = (list, start) => {
-    res.push([...list])
+  const res = []
+  const bfs = (arr, start) => {
+    res.push([...arr])
     for (let i = start; i < nums.length; i++) {
-      list.push(nums[i])
-      tra(list, i + 1)
-      list.pop()
+      arr.push(nums[i])
+      bfs(arr, i + 1)
+      arr.pop()
     }
   }
-
-  tra([], 0)
+  bfs([], 0)
   return res
 };
 // @lc code=end

@@ -16,7 +16,6 @@
 //  dp[11] = Math.min(dp[10] + 1， dp[9] + 1, dp[6] + 1)
 
 var coinChange = function (coins, amount) {
-
   let dp = new Array(amount + 1).fill(Infinity)
   dp[0] = 0
   for (let i = 0; i <= amount; i++) {

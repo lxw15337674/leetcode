@@ -10,29 +10,24 @@
  * @return {number}
  */
 var climbStairs = function (n) {
-  // 从后往前，并记录
-  // const array = new Array(n)
-  // array[0] = 0
-  // array[1] = 1
-  // array[2] = 2
+  // 从后往前
+  // const array = [0, 1, 2]
   // const tra = (n) => {
-  //   if (array[n] !== undefined) {
+  //   if (array[n]) {
   //     return array[n]
   //   }
-  //   array[n] = tra(n - 2) + tra(n - 1)
-  //   return array[n]
+  //   const res = tra(n - 2) + tra(n - 1)
+  //   array[n] = res
+  //   return res
   // }
-  // tra(n)
-  // return array[n]
+  // return tra(n)
 
   // 从前往后
-  const array = new Array(n)
+  const array = [0, 1, 2]
   const tra = (n) => {
     for (let i = 0; i <= n; i++) {
-      if (i <= 2) {
-        array[i] = i
-      } else {
-        array[i] = array[i - 1] + array[i - 2]
+      if (!array[i]) {
+        array[i] = array[i - 2] + array[i - 1]
       }
     }
     return array[n]

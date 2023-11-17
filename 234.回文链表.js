@@ -1,50 +1,4 @@
-/*
- * @lc app=leetcode.cn id=234 lang=javascript
- *
- * [234] 回文链表
- *
- * https://leetcode.cn/problems/palindrome-linked-list/description/
- *
- * algorithms
- * Easy (52.96%)
- * Likes:    1637
- * Dislikes: 0
- * Total Accepted:    566.7K
- * Total Submissions: 1.1M
- * Testcase Example:  '[1,2,2,1]'
- *
- * 给你一个单链表的头节点 head ，请你判断该链表是否为回文链表。如果是，返回 true ；否则，返回 false 。
- *
- *
- *
- * 示例 1：
- *
- *
- * 输入：head = [1,2,2,1]
- * 输出：true
- *
- *
- * 示例 2：
- *
- *
- * 输入：head = [1,2]
- * 输出：false
- *
- *
- *
- *
- * 提示：
- *
- *
- * 链表中节点数目在范围[1, 10^5] 内
- * 0 <= Node.val <= 9
- *
- *
- *
- *
- * 进阶：你能否用 O(n) 时间复杂度和 O(1) 空间复杂度解决此题？
- *
- */
+// https://leetcode.cn/problems/palindrome-linked-list/solutions/457288/shou-hua-tu-jie-hui-wen-lian-biao-kuai-man-zhi-zhe/
 
 // @lc code=start
 /**
@@ -59,16 +13,23 @@
  * @return {boolean}
  */
 var isPalindrome = function (head) {
-	const vals = [];
-	while (head !== null) {
-		vals.push(head.val);
-		head = head.next;
+	// 方法一：将值复制到数组中后用双指针法
+	const array = []
+	while (head) {
+		array.push(head.val)
+		head = head.next
 	}
-	for (let i = 0, j = vals.length - 1; i < j; ++i, --j) {
-		if (vals[i] !== vals[j]) {
-			return false;
+	let left = 0, right = array.length - 1
+	while (left < right) {
+		if (array[left] !== array[right]) {
+			return false
 		}
+		left++
+		right--
 	}
-	return true;
+	return true
+
+	// 方法二：快慢指针,快慢指针，起初都指向表头，快指针一次走两步，慢指针一次走一步，遍历结束时：
+
 };
 // @lc code=end
