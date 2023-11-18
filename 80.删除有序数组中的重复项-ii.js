@@ -13,28 +13,24 @@ var removeDuplicates = function (nums) {
   if (nums.length == 0) {
     return 0;
   }
-  // 快慢指针，维护 nums[0..slow] 为结果子数组
-  let slow = 0, fast = 0;
-  // 记录一个元素重复的次数
-  let count = 0;
-  while (fast < nums.length) {
-    if (nums[fast] != nums[slow]) {
-      slow++;
-      nums[slow] = nums[fast];
-    } else if (slow < fast && count < 2) {
-      // 当一个元素重复次数不到 2 次时，也
-      slow++;
-      nums[slow] = nums[fast];
+  let left = 0, right = 1, count = 1
+  while (right < nums.length) {
+    const leftChar = nums[left]
+    const rightChar = nums[right]
+    if (leftChar !== rightChar) {
+      count = 1
+      left++
+      nums[left] = nums[right]
+    } else {
+      count++
+      if (count <= 2) {
+        left++
+        nums[left] = nums[right]
+      } 
     }
-    fast++;
-    count++;
-    if (fast < nums.length && nums[fast] != nums[fast - 1]) {
-      // 遇到不同的元素
-      count = 0;
-    }
+    right++
   }
-  // 数组长度为索引 + 1
-  return slow + 1;
+  return left + 1
 };
 // @lc code=end
 
