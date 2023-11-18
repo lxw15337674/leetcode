@@ -16,11 +16,12 @@ var lengthOfLongestSubstring = function (s) {
   while (right < s.length) {
     const rightChar = s[right]
     while (map.get(rightChar)) {
-      map.set(s[left], map.get(s[left]) - 1)
+      const leftChar = s[left]
+      map.set(leftChar, map.get(leftChar) - 1)
       left++
     }
-    map.set(rightChar, 1)
-    max = Math.max(right - left + 1, max)
+    map.set(rightChar, (map.get(rightChar) ?? 0) + 1)
+    max = Math.max(max, right - left + 1)
     right++
   }
   return max

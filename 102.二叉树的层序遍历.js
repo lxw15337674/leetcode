@@ -38,7 +38,7 @@ var levelOrder = function (root) {
   //   }
   //   queue = levelNodes
   // }
-  // 第二种写法
+  // 第二种写法,始终维护一个队列
   while (queue.length) {
     const length = queue.length
     const levelNodes = []

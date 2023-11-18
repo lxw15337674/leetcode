@@ -15,8 +15,8 @@ var findLengthOfLCIS = function (nums) {
     return nums.length
   }
 
-  let maxLength = 1;
-  let currentLength = 1;
+  let maxLength = 1
+  let currentLength = 1
   for (let i = 0; i < nums.length; i++) {
     if (nums[i] > nums[i - 1]) {
       currentLength++
@@ -25,7 +25,7 @@ var findLengthOfLCIS = function (nums) {
       currentLength = 1
     }
   }
-  return maxLength;
+  return maxLength
 };
 // @lc code=end
 

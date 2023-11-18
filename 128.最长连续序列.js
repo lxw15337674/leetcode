@@ -10,6 +10,7 @@
  * @return {number}
  */
 var longestConsecutive = function (nums) {
+  // 先排序，然后循环
   if (!nums.length) return 0
   nums.sort((a, b) => a - b)
   let currentLen = 1
@@ -26,6 +27,27 @@ var longestConsecutive = function (nums) {
     }
   }
   return maxLen
+
+
+  // 哈希表，每个都假设是最小的起点，然后往后找连续
+  // let num_set = new Set();
+  // for (const num of nums) {
+  //   num_set.add(num);
+  // }
+  // let longestStreak = 0;
+  // for (const num of num_set) {
+  //   if (!num_set.has(num - 1)) {
+  //     let currentNum = num;
+  //     let currentStreak = 1;
+  //     while (num_set.has(currentNum + 1)) {
+  //       currentNum += 1;
+  //       currentStreak += 1;
+  //     }
+
+  //     longestStreak = Math.max(longestStreak, currentStreak);
+  //   }
+  // }
+  // return longestStreak;
 };
 // @lc code=end
 

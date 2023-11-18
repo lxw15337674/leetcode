@@ -33,22 +33,18 @@ var longestCommonPrefix = function (strs) {
 
 
   // 思路2：循环比较
-  let i = 0
   let public = ''
-  while (true) {
+  const minLen = Math.min(...strs.map(str => str.length))
+  for (let i = 0; i < minLen; i++) {
     const char = strs[0][i]
     for (let str of strs) {
-      if (str[i] !== char || str[i] === undefined) {
+      if (str[i] !== char) {
         return public
       }
     }
     public += char
-    i++
-    // 终止条件：当遍历到某个字符串的结尾时
-    if (i >= strs[0].length) {
-      return public;
-    }
   }
+  return public
 };
 // @lc code=end
 

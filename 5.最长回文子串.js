@@ -27,7 +27,6 @@ var longestPalindrome = function (s) {
     i++
   }
   return max
-
 };
 // @lc code=end
 
