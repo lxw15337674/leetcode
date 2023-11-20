@@ -28,7 +28,6 @@ var longestConsecutive = function (nums) {
   }
   return maxLen
 
-
   // 哈希表，每个都假设是最小的起点，然后往后找连续
   // let num_set = new Set();
   // for (const num of nums) {
