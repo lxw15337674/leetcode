@@ -15,9 +15,8 @@
  */
 var merge = function (nums1, m, nums2, n) {
   // 方法1：最简单的方法，把两个数组合并，然后进行排序
-  // let rightChar = 0
-  // for (let i = m; i < nums1.length; i++) {
-  //   nums1[i] = nums2[rightChar++]
+  // for (let i = 0; i < n; i++) {
+  //   nums1[m + i] = nums2[i]
   // }
   // nums1.sort((a, b) => a - b)
 

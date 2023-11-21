@@ -10,21 +10,17 @@
  * @return {number}
  */
 var lengthOfLongestSubstring = function (s) {
-  // 滑动窗口
-  const map = new Map()
-  let left = 0, right = 0, max = 0
+  let maxLen = 0, left = 0, right = 0, map = new Map()
   while (right < s.length) {
-    const rightChar = s[right]
-    while (map.get(rightChar)) {
-      const leftChar = s[left]
-      map.set(leftChar, map.get(leftChar) - 1)
+    while (map.get(s[right])) {
+      map.set(s[left], map.get(s[left]) - 1)
       left++
     }
-    map.set(rightChar, (map.get(rightChar) ?? 0) + 1)
-    max = Math.max(max, right - left + 1)
+    maxLen = Math.max(maxLen, right - left + 1)
+    map.set(s[right], (map.get(s[right]) || 0) + 1)
     right++
   }
-  return max
+  return maxLen
 };
 // @lc code=end
 
