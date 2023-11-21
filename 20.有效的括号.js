@@ -10,6 +10,7 @@
  * @return {boolean}
  */
 var isValid = function (s) {
+  // 思路：栈保存左括号，碰到右括号则出栈进行匹配
   const pairs = new Map([
     ['(', ')'],
     ['[', ']'],
@@ -20,8 +21,7 @@ var isValid = function (s) {
     if (pairs.has(char)) {
       stack.push(char)
     } else {
-      const matchParis = stack.pop()
-      if (char !== pairs.get(matchParis)) {
+      if (pairs.get(stack.pop()) !== char) {
         return false
       }
     }
