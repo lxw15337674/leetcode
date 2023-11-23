@@ -10,31 +10,27 @@
  * @return {number[][]}
  */
 var permute = function (nums) {
-  const res = [];
-  const map = {}
-  const tra = (path) => {
-    if (nums.length === path.length) {
-      const item = []
-      for (let index of path) {
-        item.push(nums[index])
-      }
-      res.push(item)
+  // 思路：回溯，然后通过map记录已经用到的key，进行剪枝
+  const res = []
+  const map = new Map()
+  const tra = (paths) => {
+    if (paths.length === nums.length) {
+      res.push(paths.map(index => nums[index]))
       return
     }
     for (let i = 0; i < nums.length; i++) {
-      if (map[i]) {
+      if (map.get(i)) {
         continue
       }
-
-      path.push(i)
-      map[i] = true
-      tra(path)
-      map[i] = false
-      path.pop()
+      paths.push(i)
+      map.set(i, true)
+      tra(paths)
+      paths.pop()
+      map.set(i, false)
     }
   }
   tra([])
-  return res;
+  return res
 };
 // @lc code=end
 

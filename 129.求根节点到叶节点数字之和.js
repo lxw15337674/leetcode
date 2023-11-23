@@ -18,19 +18,21 @@
  * @return {number}
  */
 var sumNumbers = function (root) {
+  // 思路：深度遍历
   let count = 0
-  const dfs = (str, node) => {
-    if (!node) {
-      return;
+  const tra = (str, node) => {
+    str += node?.val ?? ''
+    if (!node?.left && !node?.right && node) {
+      count += Number(str)
     }
-    if (!node?.left && !node?.right) {
-      count += Number(str + node?.val)
-      return
+    if (node?.left) {
+      tra(str, node.left)
     }
-    dfs(str + node.val, node.left)
-    dfs(str + node.val, node.right)
+    if (node?.right) {
+      tra(str, node.right)
+    }
   }
-  dfs('', root)
+  tra('', root)
   return count
 };
 // @lc code=end

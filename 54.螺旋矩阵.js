@@ -10,50 +10,54 @@
  * @return {number[]}
  */
 var spiralOrder = function (matrix) {
+  // 思路：使用四个变量 top、bottom、left 和 right 来跟踪当前螺旋矩阵的边界，并在遍历过程中逐步收缩边界。
   const numRows = matrix.length;
   if (numRows === 0) {
     return [];
   }
   const numCols = matrix[0].length;
 
-  let top = 0;
-  let bottom = numRows - 1;
-  let left = 0;
-  let right = numCols - 1;
-
-  const res = [];
-
+  const res = []
+  let top = 0, bottom = numRows - 1, left = 0, right = numCols - 1;
   while (top <= bottom && left <= right) {
-    // Traverse right
+    // 左上到右上
     for (let col = left; col <= right; col++) {
       res.push(matrix[top][col]);
     }
     top++;
+    if (top > bottom) {
+      break;
+    }
 
-    // Traverse down
+    // 右上到右下
     for (let row = top; row <= bottom; row++) {
       res.push(matrix[row][right]);
     }
     right--;
-
-    // Check if there are remaining rows and traverse left
-    if (top <= bottom) {
-      for (let col = right; col >= left; col--) {
-        res.push(matrix[bottom][col]);
-      }
-      bottom--;
+    if (left > right) {
+      break;
     }
 
-    // Check if there are remaining columns and traverse up
-    if (left <= right) {
-      for (let row = bottom; row >= top; row--) {
-        res.push(matrix[row][left]);
-      }
-      left++;
+    // 右下到左下
+    for (let col = right; col >= left; col--) {
+      res.push(matrix[bottom][col]);
+    }
+    bottom--;
+    if (top > bottom) {
+      break;
+    }
+
+    // 左下到左上
+    for (let row = bottom; row >= top; row--) {
+      res.push(matrix[row][left]);
+    }
+    left++;
+    if (left > right) {
+      break;
     }
   }
 
-  return res;
+  return res
 };
 // @lc code=end
 
