@@ -10,24 +10,27 @@
  * @return {number}
  */
 var numIslands = function (grid) {
+  // 思路：从左上角开始遍历，找到岛屿，就count+1，然后把相邻的陆地都重置为0，
   let count = 0
-  const searchGrid = (x, y) => {
-    if (grid?.[y]?.[x] === "1") {
-      grid[y][x] = "0"
-      searchGrid(x - 1, y)
-      searchGrid(x + 1, y)
-      searchGrid(x, y - 1)
-      searchGrid(x, y + 1)
+  const tra = (row, col) => {
+    if (grid?.[row]?.[col] === '1') {
+      grid[row][col] = '0'
+      tra(row + 1, col)
+      tra(row - 1, col)
+      tra(row, col + 1)
+      tra(row, col - 1)
     }
   }
-  for (let y = 0; y < grid.length; y++) {
-    for (let x = 0; x < grid[0].length; x++) {
-      if (grid[y][x] === "1") {
-        searchGrid(x, y)
+
+  for (let row = 0; row < grid.length; row++) {
+    for (let col = 0; col < grid[0].length; col++) {
+      if (grid[row][col] === '1') {
+        tra(row, col)
         count++
       }
     }
   }
+
   return count
 };
 // @lc code=end

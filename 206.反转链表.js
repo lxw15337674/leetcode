@@ -19,15 +19,14 @@
  * @return {ListNode}
  */
 var reverseList = function (head) {
-	let pre = null; // 指向当前节点的前一个节点
-	let cur = head; // 指向当前节点
-	while (cur) {
-		const next = cur.next; // 保存当前节点的下一个节点
-		cur.next = pre; // 将当前节点的 next 指针指向前一个节点，实现反转
-		pre = cur; // 更新 pre 指针为当前节点
-		cur = next; // 更新 cur 指针为下一个节点，继续遍历链表
+	// 思路：三个指针，preNode、currentNode、NextNode，从开始进行遍历并交换前后节点。
+	let pre = null, cursor = head
+	while (cursor) {
+		const next = cursor.next
+		cursor.next = pre
+		pre = cursor
+		cursor = next
 	}
-
-	return pre; // 返回反转后的链表的头节点
+	return pre
 };
 // @lc code=end

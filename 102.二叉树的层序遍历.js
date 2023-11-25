@@ -18,31 +18,17 @@
  * @return {number[][]}
  */
 var levelOrder = function (root) {
+  // 回溯
   if (!root) {
     return []
   }
+  // 第一种写法：遍历
   const res = []
   let queue = [root]
-  //  第一种写法
-  // while (queue.length) {
-  //   const levelNodes = []
-  //   res.push([])
-  //   for (let item of queue) {
-  //     res[res.length - 1].push(item.val)
-  //     if (item.left) {
-  //       levelNodes.push(item.left)
-  //     }
-  //     if (item.right) {
-  //       levelNodes.push(item.right)
-  //     }
-  //   }
-  //   queue = levelNodes
-  // }
-  // 第二种写法,始终维护一个队列
   while (queue.length) {
-    const length = queue.length
+    const len = queue.length
     const levelNodes = []
-    for (let i = 0; i < length; i++) {
+    for (let i = 0; i < len; i++) {
       const node = queue.shift()
       levelNodes.push(node.val)
       if (node.left) {
@@ -52,9 +38,33 @@ var levelOrder = function (root) {
         queue.push(node.right)
       }
     }
-    res.push(levelNodes);
+    res.push(levelNodes)
   }
   return res
+
+  // 第二种写法: 递归
+  // const res = []
+  // const tra = (nodes) => {
+  //   if (!nodes.length) {
+  //     return
+  //   }
+  //   const levelNodes = []
+  //   const nextNodes = []
+  //   while (nodes.length) {
+  //     const node = nodes.shift()
+  //     levelNodes.push(node.val)
+  //     if (node.left) {
+  //       nextNodes.push(node.left)
+  //     }
+  //     if (node.right) {
+  //       nextNodes.push(node.right)
+  //     }
+  //   }
+  //   res.push(levelNodes)
+  //   tra(nextNodes)
+  // }
+  // tra([root])
+  // return res
 };
 // @lc code=end
 
