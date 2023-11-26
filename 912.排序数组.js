@@ -13,30 +13,30 @@ var sortArray = function (nums) {
   // 快速排序
   const sort = (start, end) => {
     if (start >= end) {
-      return
+      return;
     }
-    let left = start
-    let right = end
-    let mid = Math.floor((start + end) / 2)
-    let val = nums[mid]
+    let left = start;
+    let right = end;
+    let mid = Math.floor((start + end) / 2);
+    let val = nums[mid];
     while (left <= right) {
       while (nums[left] < val) {
-        left++
+        left++;
       }
       while (nums[right] > val) {
-        right--
+        right--;
       }
-      while (left <= right) {
+      if (left <= right) {
         [nums[left], nums[right]] = [nums[right], nums[left]];
-        left++
-        right--
+        left++;
+        right--;
       }
     }
-    sort(start, right)
-    sort(left, end)
+    sort(start, right);
+    sort(left, end);
   }
-  sort(0, nums.length - 1)
-  return nums
+  sort(0, nums.length - 1);
+  return nums;
 };
 // @lc code=end
 

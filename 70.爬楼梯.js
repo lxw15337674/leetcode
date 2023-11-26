@@ -10,27 +10,24 @@
  * @return {number}
  */
 var climbStairs = function (n) {
-  // 从后往前
-  // const array = [0, 1, 2]
-  // const tra = (n) => {
-  //   if (array[n]) {
-  //     return array[n]
-  //   }
-  //   const res = tra(n - 2) + tra(n - 1)
-  //   array[n] = res
-  //   return res
+  // 从前往后,动态规划
+  // const list = [0, 1, 2]
+  // for (let i = 3; i <= n; i++) {
+  //   list[i] = list[i - 1] + list[i - 2]
   // }
-  // return tra(n)
+  // return list[n]
 
-  // 从前往后
-  const array = [0, 1, 2]
+  // 从后往前
+  // 递归
+  const list = [0, 1, 2]
   const tra = (n) => {
-    for (let i = 0; i <= n; i++) {
-      if (!array[i]) {
-        array[i] = array[i - 2] + array[i - 1]
-      }
+    if (list[n] !== undefined) {
+      return list[n]
+    } else {
+      const count = tra(n - 1) + tra(n - 2)
+      list[n] = count
+      return count
     }
-    return array[n]
   }
   return tra(n)
 };

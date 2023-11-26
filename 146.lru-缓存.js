@@ -5,6 +5,14 @@
  */
 
 // https://leetcode.cn/problems/lru-cache/solutions/2456294/tu-jie-yi-zhang-tu-miao-dong-lrupythonja-czgt/
+// https://leetcode.cn/problems/lru-cache/solutions/260362/bu-yong-yu-yan-nei-jian-de-map-gua-dang-feng-zhuan/
+
+// 数据被读取了，就是被使用了，所在的位置要刷新，浮到“顶部”。
+// 写入数据时：
+// 之前就存在的：更新数据，刷新位置。
+// 之前不存在的：有位置就直接写入，没有位置，就删掉最久没有使用的条目，再写入。
+// 要求 get 和 put 为 O(1)，这俩操作都可能导致条目的移动(有删除操作)，所以删除操作也要是 O(1)。
+
 class Node {
   constructor(key = 0, value = 0) {
     this.key = key;
