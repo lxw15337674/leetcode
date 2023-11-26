@@ -10,23 +10,22 @@
  * @return {number}
  */
 var lengthOfLIS = function (nums) {
-  const len = nums.length;
-  // dp[i]: 以第i位结尾时的最长递增子序列的长度(第i位必选), 初始值为1
-  const dp = new Array(len).fill(1);
-  let ans = 1;
-
-  for (let i = 1; i < len; i++) {
-    for (let j = i - 1; j >= 0; j--) {
-      // 将第i位与前面所有比较，找到最长的上升子序列
-      // 如果第j位的数字比nums[i]小，dp[j]加上nums[i]就是一种以nums[i]结尾的上升子序列，就取dp[j]+1与dp[i]的较大者
-      if (nums[i] > nums[j]) {
+  // 动态规划，dp[i]含义：从0到下标为i的序列的最长子序列长度
+  const len = nums.length
+  dp = new Array(nums.length).fill(1)//默认前面都比当前元素大，则为1
+  let max = 0
+  for (let i = 0; i < len; i++) {
+    // i与i前面的元素比较
+    for (let j = 0; j < i; j++) {
+      // 找比i小的元素，找到一个，就让当前序列的最长子序列长度加1
+      if (nums[j] < nums[i]) {
+  // 是否存在
         dp[i] = Math.max(dp[i], dp[j] + 1);
       }
     }
-    // 更新答案
-    ans = Math.max(ans, dp[i]);
+    max = Math.max(dp[i], max)
   }
-  return ans;
+  return max
 };
 // @lc code=end
 

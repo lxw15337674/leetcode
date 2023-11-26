@@ -9,7 +9,8 @@
  * @param {number} n
  * @return {string[]}
  */
-
+// https://leetcode.cn/problems/generate-parentheses/solutions/418884/shou-hua-tu-jie-gua-hao-sheng-cheng-hui-su-suan-fa/
+// 回溯,剪枝规则：已经用的右括号数量大于左括号数量
 // 创建一个空数组 result，用于存储生成的有效括号组合。
 // 定义一个辅助函数 backtrack，该函数接收三个参数：
 // current：当前的括号组合字符串。
@@ -22,26 +23,20 @@
 // 在主函数中调用 backtrack，并将初始参数设置为("", 0, 0)。
 // 返回 result，即为所有可能的有效括号组合。
 var generateParenthesis = function (n) {
-
   const result = [];
-
-  function backtrack(current, open, close) {
+  const dfs = (str, open, close) => {
     if (open === n && close === n) {
-      result.push(current);
-      return;
+      result.push(str)
     }
-
     if (open < n) {
-      backtrack(current + "(", open + 1, close);
+      dfs(`${str}(`, open + 1, close)
     }
-
-    if (close < open) {
-      backtrack(current + ")", open, close + 1);
+    if (open > close) {
+      dfs(`${str})`, open, close + 1)
     }
   }
-
-  backtrack("", 0, 0);
-  return result;
+  dfs('', 0, 0)
+  return result
 };
 // @lc code=end
 
