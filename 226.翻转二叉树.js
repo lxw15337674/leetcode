@@ -18,13 +18,14 @@
  * @return {TreeNode}
  */
 var invertTree = function (root) {
-  const traverse = (node) => {
+  // 先序遍历
+  const tra = (node) => {
     if (!node) return
     [node.left, node.right] = [node.right, node.left]
-    traverse(node.left)
-    traverse(node.right)
+    tra(node.left)
+    tra(node.right)
   }
-  traverse(root)
+  tra(root)
   return root
 };
 // @lc code=end

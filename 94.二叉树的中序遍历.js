@@ -18,14 +18,16 @@
  * @return {number[]}
  */
 var inorderTraversal = function (root) {
-  const traversal = (node, res) => {
-    if (!node) return
-    traversal(node.left, res) //左节点
-    res.push(node.val) //根节点
-    traversal(node.right, res) //右节点
-  }
   const res = []
-  traversal(root, res)
+  const tra = (node) => {
+    if (!node) {
+      return
+    }
+    tra(node.left)
+    res.push(node.val)
+    tra(node.right)
+  }
+  tra(root)
   return res
 };
 // @lc code=end
