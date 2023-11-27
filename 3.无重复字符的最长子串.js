@@ -10,14 +10,18 @@
  * @return {number}
  */
 var lengthOfLongestSubstring = function (s) {
-  let maxLen = 0, left = 0, right = 0, map = new Map()
+  // 滑动窗口，收缩规则是当出现重复字符
+  const map = new Map()
+  let maxLen = 0
+  let left = 0
+  let right = 0
   while (right < s.length) {
     while (map.get(s[right])) {
-      map.set(s[left], map.get(s[left]) - 1)
+      map.set(s[left], 0)
       left++
     }
     maxLen = Math.max(maxLen, right - left + 1)
-    map.set(s[right], (map.get(s[right]) || 0) + 1)
+    map.set(s[right], 1)
     right++
   }
   return maxLen
