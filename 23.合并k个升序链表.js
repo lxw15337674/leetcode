@@ -130,7 +130,6 @@ var mergeKLists = function (lists) {
 };
 // @lc code=end
 
-
 // @after-stub-for-debug-begin
 module.exports = mergeKLists;
 // @after-stub-for-debug-end

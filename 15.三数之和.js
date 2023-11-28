@@ -10,37 +10,37 @@
  * @return {number[][]}
  */
 var threeSum = function (nums) {
-	// 两数之和用左右指针法
-	function twoSum(nums, target) {
-		let left = 0, right = nums.length - 1, res = []
+	const twoSum = (nums, target) => {
+		let left = 0, right = nums.length - 1, res = [];
 		while (left < right) {
-			const count = nums[left] + nums[right];
-			if (count > target || nums[right + 1] === nums[right]) {
-				right--;
-				continue;
-			}
-			if (count < target || nums[left - 1] === nums[left]) {
-				left++;
-				continue;
-			}
-			if (count === target) {
+			if (target === nums[left] + nums[right]) {
 				res.push([nums[left], nums[right]]);
 				left++;
-				continue;
+				right--;
+				// 去重逻辑
+				while (left < right && nums[left] === nums[left - 1]) {
+					left++;
+				}
+				while (left < right && nums[right] === nums[right + 1]) {
+					right--;
+				}
+			} else if (target > nums[left] + nums[right]) {
+				left++;
+			} else {
+				right--;
 			}
 		}
-		return res
-	}
+		return res;
+	};
+
+	// 排序
+	nums.sort((a, b) => a - b);
 	const res = [];
-	// 首先将原数组进行升序排序
-	nums = nums.sort((a, b) => a - b);
-	// 遍历数组，寻找三数之和为 0 的数对
-	for (let i = 0; i < nums.length; i++) {
-		// 如果当前元素与前一个元素相同，跳过本次循环
-		if (nums[i] === nums[i - 1]) {
+	for (let i = 0; i < nums.length - 2; i++) {
+		// 去重逻辑
+		if (i > 0 && nums[i] === nums[i - 1]) {
 			continue;
 		}
-		// 在当前元素后面的数组中寻找两数之和为 -nums[i] 的数对，并加入结果数组中
 		for (let item of twoSum(nums.slice(i + 1), -nums[i])) {
 			res.push([nums[i], ...item]);
 		}

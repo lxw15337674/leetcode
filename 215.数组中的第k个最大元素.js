@@ -19,28 +19,29 @@
 // 中位数的中位数（bfprt）算法：最坏O(n)
 var findKthLargest = function (nums, k) {
   // 快速排序，然后前k个
-  const quickSort = (array, left, right) => {
+  const quickSort = (nums, left, right) => {
     if (left >= right) {
-      return
+      return;
     }
-    let l = left, r = right
-    const mid = Math.floor((right + left) / 2)
-    const baseVal = array[mid];
+    const mid = Math.floor((right + left) / 2);
+    const midVal = nums[mid];
+    let l = left;
+    let r = right;
     while (l <= r) {
-      while (array[l] < baseVal) {
-        l++
+      while (nums[l] < midVal) {
+        l++;
       }
-      while (array[r] > baseVal) {
-        r--
+      while (nums[r] > midVal) {
+        r--;
       }
       if (l <= r) {
-        [array[l], array[r]] = [array[r], array[l]]
-        l++
-        r--
+        [nums[l], nums[r]] = [nums[r], nums[l]];
+        l++;
+        r--;
       }
     }
-    quickSort(array, left, r)
-    quickSort(array, l, right)
+    quickSort(nums, left, r);
+    quickSort(nums, l, right)
   }
   quickSort(nums, 0, nums.length - 1)
   return nums[nums.length - k]
