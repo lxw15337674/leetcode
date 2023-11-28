@@ -10,6 +10,7 @@
  * @return {number[][]}
  */
 var threeSum = function (nums) {
+	// 两数之和用左右指针法
 	function twoSum(nums, target) {
 		let left = 0, right = nums.length - 1, res = []
 		while (left < right) {
