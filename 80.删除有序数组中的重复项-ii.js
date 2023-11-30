@@ -10,27 +10,28 @@
  * @return {number}
  */
 var removeDuplicates = function (nums) {
-  if (nums.length == 0) {
-    return 0;
+  if (nums.length <= 2) {
+    return nums.length;
   }
-  let left = 0, right = 1, count = 1
-  while (right < nums.length) {
-    const leftChar = nums[left]
-    const rightChar = nums[right]
-    if (leftChar !== rightChar) {
-      count = 1
-      left++
-      nums[left] = nums[right]
+  let slow = 0, fast = 0, count = 0;
+  while (fast < nums.length) {
+    // 如果与前一个相同，则count++，否则重新计数
+    if (nums[fast] === nums[fast - 1]) {
+      count++;
     } else {
-      count++
-      if (count <= 2) {
-        left++
-        nums[left] = nums[right]
-      } 
+      count = 1;
     }
-    right++
+
+    // 如果count小于2，则进行交换，并移动慢指针
+    if (count <= 2) {
+      nums[slow] = nums[fast];
+      slow++;
+    }
+
+    fast++;
   }
-  return left + 1
+
+  return slow;
 };
 // @lc code=end
 
