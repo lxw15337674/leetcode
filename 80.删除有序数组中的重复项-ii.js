@@ -10,9 +10,6 @@
  * @return {number}
  */
 var removeDuplicates = function (nums) {
-  if (nums.length <= 2) {
-    return nums.length;
-  }
   let slow = 0, fast = 0, count = 0;
   while (fast < nums.length) {
     // 如果与前一个相同，则count++，否则重新计数
