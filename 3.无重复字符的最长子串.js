@@ -11,16 +11,16 @@
  */
 var lengthOfLongestSubstring = function (s) {
   // 滑动窗口，收缩规则是当出现重复字符
-  const map = new Map()
-  let left = 0
-  let right = 0
+  let map = new Map()
+  let left = 0;
+  let right = 0;
   let maxLen = 0
   while (right < s.length) {
     while (map.get(s[right])) {
       map.set(s[left], 0)
       left++
     }
-    maxLen = Math.max(right - left + 1, maxLen)
+    maxLen = Math.max(maxLen, right - left + 1)
     map.set(s[right], 1)
     right++
   }
