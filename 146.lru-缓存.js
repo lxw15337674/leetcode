@@ -13,69 +13,38 @@
 // 之前不存在的：有位置就直接写入，没有位置，就删掉最久没有使用的条目，再写入。
 // 要求 get 和 put 为 O(1)，这俩操作都可能导致条目的移动(有删除操作)，所以删除操作也要是 O(1)。
 
-class Node {
-  constructor(key = 0, value = 0) {
-    this.key = key;
-    this.value = value;
-    this.prev = null;
-    this.next = null;
-  }
-}
 
 class LRUCache {
   constructor(capacity) {
-    this.capacity = capacity;
-    this.dummy = new Node(); // 哨兵节点
-    this.dummy.prev = this.dummy;
-    this.dummy.next = this.dummy;
-    this.keyToNode = new Map();
-  }
-
-  getNode(key) {
-    if (!this.keyToNode.has(key)) { // 没有这本书
-      return null;
-    }
-    const node = this.keyToNode.get(key); // 有这本书
-    this.remove(node); // 把这本书抽出来
-    this.pushFront(node); // 放在最上面
-    return node;
+    this.cache = new Map()  //初始化map数据结构
+    this.capacity = capacity  //容量
   }
 
   get(key) {
-    const node = this.getNode(key);
-    return node ? node.value : -1;
+    if (this.cache.has(key)) {   //map中有这个元素
+      let value = this.cache.get(key);  //调用map的get方法获取元素
+      //更新key=>value
+      this.cache.delete(key);  //删除之前的元素
+      this.cache.set(key, value);  //将新获取的相同的元素以键值对推入map中
+      return value   //返回关键字的值
+    }
+    return -1  //map中没有这个元素返回-1
   }
 
   put(key, value) {
-    let node = this.getNode(key);
-    if (node) { // 有这本书
-      node.value = value; // 更新 value
-      return;
+    if (this.cache.has(key)) {  //有这个元素
+      this.cache.delete(key);  //删除
     }
-    node = new Node(key, value) // 新书
-    this.keyToNode.set(key, node);
-    this.pushFront(node); // 放在最上面
-    if (this.keyToNode.size > this.capacity) { // 书太多了
-      const backNode = this.dummy.prev;
-      this.keyToNode.delete(backNode.key);
-      this.remove(backNode); // 去掉最后一本书
+    //判断有没有达到存储的阈值
+    if (this.cache.size >= this.capacity) {
+      //移除谁 再放新值  
+      //m.keys().next()拿到首位的键值对
+      this.cache.delete(this.cache.keys().next().value)
     }
-  }
-
-  // 删除一个节点（抽出一本书）
-  remove(x) {
-    x.prev.next = x.next;
-    x.next.prev = x.prev;
-  }
-
-  // 在链表头添加一个节点（把一本书放在最上面）
-  pushFront(x) {
-    x.prev = this.dummy;
-    x.next = this.dummy.next;
-    x.prev.next = x;
-    x.next.prev = x;
+    this.cache.set(key, value);
   }
 }
+
 
 /**
  * Your LRUCache object will be instantiated and called as such:
@@ -85,3 +54,9 @@ class LRUCache {
  */
 // @lc code=end
 
+
+let lRUCache = new LRUCache(2);
+lRUCache.put(1, 1); // 缓存是 {1=1}
+lRUCache.put(2, 2); // 缓存是 {1=1, 2=2}
+lRUCache.get(1);    // 返回 1
+lRUCache.put(3, 3); // 该操作会使得关键字 2 作废，缓存是 {1=1, 3=3}
