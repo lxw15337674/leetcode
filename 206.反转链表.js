@@ -20,12 +20,13 @@
  */
 var reverseList = function (head) {
 	// 思路：三个指针，preNode、currentNode、NextNode，从开始进行遍历并交换前后节点。
-	let pre = null, cursor = head
-	while (cursor) {
-		const next = cursor.next
-		cursor.next = pre
-		pre = cursor
-		cursor = next
+	let cur = head;
+	let pre = null;
+	while (cur) {
+		const next = cur.next
+		cur.next = pre
+		pre = cur
+		cur = next
 	}
 	return pre
 };
