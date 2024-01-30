@@ -22,9 +22,9 @@ var maxProfit = function (prices) {
   // 贪心算法：一次遍历，记录最小购买价格
   let buy = Infinity
   let max = -Infinity
-  for (let price of prices) {
-    buy = Math.min(buy, price)
-    max = Math.max(max, price - buy)
+  for (let i = 0; i < prices.length; i++) {
+    buy = Math.min(prices[i], buy)
+    max = Math.max(prices[i] - buy,max)
   }
   return max
 };

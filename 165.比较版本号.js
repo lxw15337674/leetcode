@@ -11,23 +11,18 @@
  * @return {number}
  */
 var compareVersion = function (version1, version2) {
-  const v1List = version1.split('.')
-  const v2List = version2.split('.')
-  const compare = (v1, v2) => {
+  // 切分版本，然后从前往后对比
+  const version1List = version1.split('.')
+  const version2List = version2.split('.')
+  const maxLen = version1List.length > version2List.length ? version1List.length : version2List.length
+
+  for (let i = 0; i < maxLen; i++) {
+    const v1 = version1List[i] ?? '0'
+    const v2 = version2List[i] ?? '0'
     if (Number(v1) === Number(v2)) {
-      return 0
+      continue
     }
-    if (Number(v1) > Number(v2)) {
-      return 1
-    } else {
-      return -1
-    }
-  }
-  for (let v = 0; v < 4; v++) {
-    const res = compare(v1List[v] || 0, v2List[v] || 0)
-    if (res) {
-      return res
-    }
+    return Number(v1) > Number(v2) ? 1 : -1
   }
   return 0
 };
