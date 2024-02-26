@@ -9,18 +9,24 @@
  * @param {number[]} nums
  * @return {number[][]}
  */
+// https://leetcode.cn/problems/subsets/solutions/420458/shou-hua-tu-jie-zi-ji-hui-su-fa-xiang-jie-wei-yun-/
 var subsets = function (nums) {
-  const res = []
-  const bfs = (arr, start) => {
-    res.push([...arr])
-    for (let i = start; i < nums.length; i++) {
-      arr.push(nums[i])
-      bfs(arr, i + 1)
-      arr.pop()
+  //集合中每个元素的选和不选，构成了一个满二叉状态树，比如，左子树是不选，右子树是选，从根节点、到叶子节点的所有路径，构成了所有子集。
+  const res = [];
+
+  const dfs = (index, list) => {
+    if (index == nums.length) { // 指针越界
+      res.push(list.slice());   // 加入解集
+      return;                   // 结束当前的递归
     }
-  }
-  bfs([], 0)
-  return res
+    list.push(nums[index]); // 选择这个数
+    dfs(index + 1, list);   // 基于该选择，继续往下递归，考察下一个数
+    list.pop();             // 上面的递归结束，撤销该选择
+    dfs(index + 1, list);   // 不选这个数，继续往下递归，考察下一个数
+  };
+  dfs(0, []);
+  return res;
+
 };
 // @lc code=end
 
